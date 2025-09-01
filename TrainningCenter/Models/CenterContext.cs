@@ -9,6 +9,14 @@ namespace TrainningCenter.Models
         public DbSet<Course> Course { get; set; }
         public DbSet<Trainee> Trainee { get; set; }
         public DbSet<CourseResult> CourseResult { get; set; }
+        public CenterContext()
+        {
+            
+        }
+        public CenterContext(DbContextOptions<CenterContext> options):base(options)
+        {
+            
+        }
         //DB option
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

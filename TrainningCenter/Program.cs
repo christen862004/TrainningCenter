@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using TrainningCenter.Models;
+using TrainningCenter.Reposiotry;
+
 namespace TrainningCenter
 {
     public class Program
@@ -8,6 +12,12 @@ namespace TrainningCenter
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<CenterContext>(options=>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("cs")));
+
+
+            builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 
             var app = builder.Build();
 

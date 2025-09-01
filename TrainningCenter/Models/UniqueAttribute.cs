@@ -14,7 +14,8 @@ namespace TrainningCenter.Models
 
             //NEw (id=0)
             //Edit (id !=0)
-            Course crsFRomB= context.Course.FirstOrDefault(c => c.Name == name && c.Id != crsFRomReq.Id);
+            Course crsFRomB= context.Course
+                .FirstOrDefault(c => c.Name == name && c.Id != crsFRomReq.Id);
             if (crsFRomB == null)
                 return ValidationResult.Success;
             return new ValidationResult("Course NAme Already Found");
